@@ -24,4 +24,3 @@ def profile_view(request):
 
 def accounts_home(request):
     return render(request, 'accounts/home.html')
-
