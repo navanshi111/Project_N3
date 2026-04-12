@@ -18,9 +18,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from accounts.views import register_view
+from accounts.views import profile_view
+
+
 urlpatterns = [
     path('', include('core.urls')),
     path('register/', register_view, name='register'),
-    path('login/', LoginView.as_view(template_name='accounts/login.html'), name='login'),
-    path('logout/', LogoutView.as_view(), name='logout'),
     path('profile/', profile_view, name='profile'),]
