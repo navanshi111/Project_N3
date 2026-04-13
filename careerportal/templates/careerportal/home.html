@@ -5,16 +5,32 @@
 </head>
 <body>
 
-    <h1>Welcome to CareerTrack</h1>
+<h1>CareerTrack</h1>
 
-    {% if user.is_authenticated %}
-        <p>Hello, {{ user.username }}</p>
-        <a href="{% url 'profile' %}">Go to Profile</a>
-        <a href="{% url 'logout' %}">Logout</a>
-    {% else %}
-        <a href="{% url 'login' %}">Login</a>
-        <a href="{% url 'register' %}">Register</a>
-    {% endif %}
+<!-- Messages -->
+{% if messages %}
+    {% for message in messages %}
+        <p style="color: green;">{{ message }}</p>
+    {% endfor %}
+{% endif %}
+
+{% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }}</p>
+
+    <a href="{% url 'profile' %}">Go to Profile</a><br><br>
+
+    <!-- ✅ Logout must be POST -->
+    <form method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+
+{% else %}
+    <p>You are not logged in.</p>
+
+    <a href="{% url 'login' %}">Login</a><br><br>
+    <a href="{% url 'register' %}">Register</a>
+{% endif %}
 
 </body>
 </html>
