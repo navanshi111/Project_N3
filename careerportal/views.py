@@ -43,7 +43,26 @@ def register_view(request):
 
 @login_required
 def profile_view(request):
-    return render(request, 'careerportal/profile.html')
+    user = request.user
+
+    applicant = None
+    employee = None
+
+    try:
+        applicant = Applicant.objects.get(id=user.id)
+    except Applicant.DoesNotExist:
+        pass
+
+    try:
+        employee = Employee.objects.get(id=user.id)
+    except Employee.DoesNotExist:
+        pass
+
+    context = {
+        'applicant': applicant,
+        'employee': employee,}
+
+    return render(request, 'careerportal/profile.html', context)
 
 def home(request):
     return render(request, 'careerportal/home.html')
