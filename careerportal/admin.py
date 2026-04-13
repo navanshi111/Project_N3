@@ -1,4 +1,18 @@
 from django.contrib import admin
-from .models import User
+from django.contrib.auth.admin import UserAdmin
+from .models import Applicant, Employee, Company
 
-admin.site.register(User)
+# Company
+admin.site.register(Company)
+
+# Applicant Admin
+@admin.register(Applicant)
+class ApplicantAdmin(UserAdmin):
+    fieldsets = UserAdmin.fieldsets + (
+        ("Applicant Info", {"fields": ("bio", "summary")}),)
+
+# Employee Admin
+@admin.register(Employee)
+class EmployeeAdmin(UserAdmin):
+    fieldsets = UserAdmin.fieldsets + (
+        ("Employee Info", {"fields": ("company",)}),)
