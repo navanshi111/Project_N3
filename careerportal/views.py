@@ -45,7 +45,7 @@ def register_view(request):
 def profile_view(request):
     return render(request, 'careerportal/profile.html')
 
-def accounts_home(request):
+def home(request):
     return render(request, 'careerportal/home.html')
 
 # Source: https://docs.djangoproject.com/en/5.2/intro/tutorial03/
