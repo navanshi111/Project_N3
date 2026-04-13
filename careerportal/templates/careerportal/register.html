@@ -1,9 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+</head>
+<body>
+
 <h2>Register</h2>
 
 <form method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
+
+    <label>Username:</label><br>
+    {{ form.username }}<br><br>
+
+    <label>Password:</label><br>
+    {{ form.password1 }}<br><br>
+
+    <label>Confirm Password:</label><br>
+    {{ form.password2 }}<br><br>
+
+    <label>User Type:</label><br>
+    {{ form.user_type }}<br><br>
+
+    <div id="applicant-fields">
+        <label>Bio:</label><br>
+        {{ form.bio }}<br><br>
+
+        <label>Summary:</label><br>
+        {{ form.summary }}<br><br>
+    </div>
+
+    <div id="employee-fields">
+        <label>Company:</label><br>
+        {{ form.company }}<br><br>
+
+        <div id="new-company-field">
+            <label>New Company:</label><br>
+            {{ form.new_company }}<br><br>
+        </div>
+    </div>
+
     <button type="submit">Register</button>
 </form>
 
+<br>
 <a href="{% url 'login' %}">Already have an account? Login</a>
+
+<script>
+    const userType = document.getElementById("id_user_type");
+    const applicantFields = document.getElementById("applicant-fields");
+    const employeeFields = document.getElementById("employee-fields");
+
+    const companyField = document.getElementById("id_company");
+    const newCompanyField = document.getElementById("new-company-field");
+
+    function toggleFields() {
+        if (userType.value === "applicant") {
+            applicantFields.style.display = "block";
+            employeeFields.style.display = "none";
+        } else if (userType.value === "employee") {
+            applicantFields.style.display = "none";
+            employeeFields.style.display = "block";
+        } else {
+            applicantFields.style.display = "none";
+            employeeFields.style.display = "none";
+        }}
+
+    function toggleCompanyField() {
+        if (companyField.value === "other") {
+            newCompanyField.style.display = "block";
+        } else {
+            newCompanyField.style.display = "none";
+        }}
+
+    userType.addEventListener("change", toggleFields);
+    companyField.addEventListener("change", toggleCompanyField);
+
+    toggleFields();
+    toggleCompanyField();
+</script>
+
+</body>
+</html>

@@ -10,18 +10,50 @@ class RegisterForm(UserCreationForm):
 
     user_type = forms.ChoiceField(choices=USER_TYPE_CHOICES)
 
-    # Applicant fields
     bio = forms.CharField(required=False)
     summary = forms.CharField(required=False)
 
-    # Employee field
-    company = forms.ModelChoiceField(
-        queryset=Company.objects.all(),
-        required=False)
+    OTHER_CHOICE = 'other'
+
+    company = forms.ChoiceField(required=False)
+    new_company = forms.CharField(required=False)
 
     class Meta:
         model = User
         fields = ['username', 'password1', 'password2']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        companies = Company.objects.all()
+        choices = [(c.id, c.name) for c in companies]
+        choices.append((self.OTHER_CHOICE, "Other"))
+
+        self.fields['company'].choices = choices
+
+    def clean(self):
+        cleaned_data = super().clean()
+        user_type = cleaned_data.get("user_type")
+
+        bio = cleaned_data.get("bio")
+        summary = cleaned_data.get("summary")
+        company = cleaned_data.get("company")
+        new_company = cleaned_data.get("new_company")
+
+        # Applicant validation
+        if user_type == "applicant":
+            if not bio or not summary:
+                raise forms.ValidationError("Applicants must fill bio and summary.")
+
+        # Employee validation
+        elif user_type == "employee":
+            if not company:
+                raise forms.ValidationError("Employees must select a company.")
+
+            if company == "other" and not new_company:
+                raise forms.ValidationError("Please enter a company name.")
+
+        return cleaned_data
     
     # - Meta defines how the form maps to the database model.
     # - Email is included to support user identification and communication.

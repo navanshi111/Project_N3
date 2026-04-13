@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm
-from .models import Applicant, Employee
+from .models import Applicant, Employee, Company
 
 def register_view(request):
     if request.method == 'POST':
@@ -20,11 +20,19 @@ def register_view(request):
                     summary=form.cleaned_data["summary"],)
 
             elif user_type == "employee":
+                company_value = form.cleaned_data["company"]
+
+                if company_value == "other":
+                    company = Company.objects.create(
+                        name=form.cleaned_data["new_company"])
+                else:
+                    company = Company.objects.get(id=company_value)
+
                 Employee.objects.create_user(
                     username=form.cleaned_data["username"],
                     password=form.cleaned_data["password1"],
                     email=form.cleaned_data.get("email"),
-                    company=form.cleaned_data["company"],)
+                    company=company,)
 
             messages.success(request, "Account created successfully")
             return redirect('login')
@@ -37,7 +45,7 @@ def register_view(request):
 def profile_view(request):
     return render(request, 'careerportal/profile.html')
 
-def home(request):
+def accounts_home(request):
     return render(request, 'careerportal/home.html')
 
 # Source: https://docs.djangoproject.com/en/5.2/intro/tutorial03/
