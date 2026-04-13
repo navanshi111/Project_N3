@@ -12,12 +12,13 @@ def register_view(request):
             user_type = form.cleaned_data.get("user_type")
 
             if user_type == "applicant":
-                Applicant.objects.create_user(
+                user = Applicant.objects.create_user(
                     username=form.cleaned_data["username"],
-                    password=form.cleaned_data["password1"],
-                    email=form.cleaned_data.get("email"),
-                    bio=form.cleaned_data["bio"],
-                    summary=form.cleaned_data["summary"],)
+                    password=form.cleaned_data["password1"],)
+                user.email = form.cleaned_data.get("email")
+                user.bio = form.cleaned_data["bio"]
+                user.summary = form.cleaned_data["summary"]
+                user.save()
 
             elif user_type == "employee":
                 company_value = form.cleaned_data["company"]
@@ -28,11 +29,12 @@ def register_view(request):
                 else:
                     company = Company.objects.get(id=company_value)
 
-                Employee.objects.create_user(
+                user = Employee.objects.create_user(
                     username=form.cleaned_data["username"],
-                    password=form.cleaned_data["password1"],
-                    email=form.cleaned_data.get("email"),
-                    company=company,)
+                    password=form.cleaned_data["password1"],)
+                user.email = form.cleaned_data.get("email")
+                user.company = company
+                user.save()
 
             messages.success(request, "Account created successfully")
             return redirect('login')
@@ -58,11 +60,10 @@ def profile_view(request):
     except Employee.DoesNotExist:
         pass
 
-    context = {
+    return render(request, 'careerportal/profile.html', {
         'applicant': applicant,
-        'employee': employee,}
-
-    return render(request, 'careerportal/profile.html', context)
+        'employee': employee,
+    })
 
 def home(request):
     return render(request, 'careerportal/home.html')

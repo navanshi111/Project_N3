@@ -10,6 +10,8 @@ class RegisterForm(UserCreationForm):
 
     user_type = forms.ChoiceField(choices=USER_TYPE_CHOICES)
 
+    email = forms.EmailField(required=True)
+
     bio = forms.CharField(required=False)
     summary = forms.CharField(required=False)
 
@@ -20,7 +22,7 @@ class RegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'password1', 'password2']
+        fields = ['username', 'email', 'password1', 'password2']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -33,19 +35,17 @@ class RegisterForm(UserCreationForm):
 
     def clean(self):
         cleaned_data = super().clean()
-        user_type = cleaned_data.get("user_type")
 
+        user_type = cleaned_data.get("user_type")
         bio = cleaned_data.get("bio")
         summary = cleaned_data.get("summary")
         company = cleaned_data.get("company")
         new_company = cleaned_data.get("new_company")
 
-        # Applicant validation
         if user_type == "applicant":
             if not bio or not summary:
                 raise forms.ValidationError("Applicants must fill bio and summary.")
 
-        # Employee validation
         elif user_type == "employee":
             if not company:
                 raise forms.ValidationError("Employees must select a company.")
