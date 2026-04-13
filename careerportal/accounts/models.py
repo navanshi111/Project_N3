@@ -6,7 +6,7 @@ from django.db import models
 class User(AbstractUser): # Using AbstractUser so everything (user + userprofile) is in one model.
     ROLE_CHOICES = (
         ('applicant', 'Applicant'),
-        ('employee', 'Employee'),)
+        ('employer', 'Employer'),)
 
     role = models.CharField(max_length=20, choices=ROLE_CHOICES)
     bio = models.TextField(blank=True)
