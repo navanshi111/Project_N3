@@ -7,6 +7,18 @@
 
 <h2>Register</h2>
 
+{% if messages %}
+    {% for message in messages %}
+        <p style="color: green;">{{ message }}</p>
+    {% endfor %}
+{% endif %}
+
+{% if form.errors %}
+    <div style="color: red;">
+        {{ form.errors }}
+    </div>
+{% endif %}
+
 <form method="POST">
     {% csrf_token %}
 
@@ -22,6 +34,7 @@
     <label>User Type:</label><br>
     {{ form.user_type }}<br><br>
 
+    <!-- Applicant Fields -->
     <div id="applicant-fields">
         <label>Bio:</label><br>
         {{ form.bio }}<br><br>
@@ -63,15 +76,13 @@
             employeeFields.style.display = "block";
         } else {
             applicantFields.style.display = "none";
-            employeeFields.style.display = "none";
-        }}
+            employeeFields.style.display = "none";}}
 
     function toggleCompanyField() {
         if (companyField.value === "other") {
             newCompanyField.style.display = "block";
         } else {
-            newCompanyField.style.display = "none";
-        }}
+            newCompanyField.style.display = "none";}}
 
     userType.addEventListener("change", toggleFields);
     companyField.addEventListener("change", toggleCompanyField);
@@ -82,5 +93,3 @@
 
 </body>
 </html>
-
-# Check if template format should change?
