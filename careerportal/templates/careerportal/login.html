@@ -1,8 +1,9 @@
-<!DOCTYPE html>
-<form method="post">
+<h2>Login</h2>
+
+<form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Login</button>
 </form>
 
-# Change to manual form?
+<a href="{% url 'register' %}">Create account</a>
