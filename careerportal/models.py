@@ -1,18 +1,41 @@
-from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+
+class Company(models.Model):
+    name = models.CharField(max_length=255)
+    
+    def __str__(self):
+        return self.name
+
+class Applicant(User):
+    bio = models.TextField(null=True)
+    summary = models.TextField(null=True)
+
+    def clean(self):
+        if not self.bio or not self.summary:
+            raise ValidationError("Applicant must have both bio and summary.")
+
+        # Preventing same user being both Applicant and Employee
+        if Employee.objects.filter(username=self.username).exists():
+            raise ValidationError("This user is already registered as an Employee.")
+
+    class Meta:
+        verbose_name = "applicant"
+
+class Employee(User):
+    company = models.ForeignKey("Company", on_delete=models.CASCADE, null=True)
+
+    def clean(self):
+        if not self.company:
+            raise ValidationError("Employee must be assigned to a company.")
+
+        # Preventing same user being both Employee and Applicant
+        if Applicant.objects.filter(username=self.username).exists():
+            raise ValidationError("This user is already registered as an Applicant.")
+
+    class Meta:
+        verbose_name = "employee"
 
 # Source is https://docs.djangoproject.com/en/5.2/intro/tutorial02/
-
-class User(AbstractUser): # Using AbstractUser so everything (user + userprofile) is in one model.
-    ROLE_CHOICES = (
-        ('applicant', 'Applicant'),
-        ('employer', 'Employer'),)
-
-    role = models.CharField(max_length=20, choices=ROLE_CHOICES)
-    bio = models.TextField(blank=True)
-    summary = models.TextField(blank=True)
-
-    def __str__(self):
-        return f"{self.username} ({self.role})"
-
-# company = models.ForeignKey('companies.Company', on_delete=models.SET_NULL, null=True, blank=True)
+# Source = Jan
