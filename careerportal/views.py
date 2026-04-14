@@ -71,4 +71,3 @@ def home(request):
     return render(request, 'careerportal/home.html')
 
 # Source: https://docs.djangoproject.com/en/5.2/intro/tutorial03/
-# Source: Lecture 5 (Properties)
