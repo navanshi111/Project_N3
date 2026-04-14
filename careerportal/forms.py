@@ -42,16 +42,24 @@ class RegisterForm(UserCreationForm):
         company = cleaned_data.get("company")
         new_company = cleaned_data.get("new_company")
 
+        # Applicant validation
         if user_type == "applicant":
             if not bio or not summary:
                 raise forms.ValidationError("Applicants must fill bio and summary.")
 
+        # Employee validation
         elif user_type == "employee":
             if not company:
                 raise forms.ValidationError("Employees must select a company.")
 
-            if company == "other" and not new_company:
-                raise forms.ValidationError("Please enter a company name.")
+            if company == "other":
+                if not new_company:
+                    raise forms.ValidationError("Please enter a company name.")
+
+                # Preventing duplicate companies, is also case-insensitive
+                existing = Company.objects.filter(name__iexact=new_company.strip()).first()
+                if existing:
+                    cleaned_data["company"] = existing.id
 
         return cleaned_data
     

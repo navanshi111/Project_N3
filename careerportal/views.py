@@ -24,8 +24,11 @@ def register_view(request):
                 company_value = form.cleaned_data["company"]
 
                 if company_value == "other":
-                    company = Company.objects.create(
-                        name=form.cleaned_data["new_company"])
+                    name = form.cleaned_data["new_company"].strip()
+
+                    company, created = Company.objects.get_or_create(
+                        name__iexact=name,
+                        defaults={"name": name})
                 else:
                     company = Company.objects.get(id=company_value)
 
@@ -62,8 +65,7 @@ def profile_view(request):
 
     return render(request, 'careerportal/profile.html', {
         'applicant': applicant,
-        'employee': employee,
-    })
+        'employee': employee,})
 
 def home(request):
     return render(request, 'careerportal/home.html')
