@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import Applicant, Employee, Company
-from .models import Job
+from .models import Applicant, Employee, Company, Job, Application 
+
 
 # Company
 admin.site.register(Company)
@@ -20,3 +20,8 @@ class ApplicantAdmin(UserAdmin):
 class EmployeeAdmin(UserAdmin):
     fieldsets = UserAdmin.fieldsets + (
         ("Employee Info", {"fields": ("company",)}),)
+    
+ # Application Admin 
+@admin.register(Application)
+class ApplicationAdmin(admin.ModelAdmin):
+    list_display = ['applicant', 'job', 'created_at']

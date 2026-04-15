@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head><title>My Applications</title></head>
+<body>
+
+<h2>My Applications</h2>
+
+{% if applications %}
+    {% for app in applications %}
+    <div>
+        <h3><a href="{% url 'job_detail' app.job.id %}">{{ app.job.title }}</a></h3>
+        <p>Applied on: {{ app.created_at|date:"d M Y" }}</p>
+        {% if app.cv %}
+            <a href="{{ app.cv.url }}" target="_blank">Download CV</a>
+        {% endif %}
+    </div>
+    <hr>
+    {% endfor %}
+{% else %}
+    <p>You haven't applied to any jobs yet.</p>
+    <a href="{% url 'job_list' %}">Browse jobs</a>
+{% endif %}
+
+<br>
+<a href="{% url 'home' %}">← Home</a>
+
+</body>
+</html>

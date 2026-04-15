@@ -1,5 +1,9 @@
 <h1> Job Listings </h1>
 
+{% if request.user.is_authenticated %}
+    <a href="{% url 'post_job' %}">+ Post a Job</a>
+{% endif %}
+
 {% for job in jobs%}
     <div>
         <h2>{{ job.title }}</h2>

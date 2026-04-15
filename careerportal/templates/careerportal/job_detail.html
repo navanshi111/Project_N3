@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><title>{{ job.title }}</title></head>
+<body>
+
+<h2>{{ job.title }}</h2>
+<p>{{ job.description }}</p>
+<p><strong>Deadline:</strong> {{ job.deadline }}</p>
+
+{% if messages %}
+    {% for message in messages %}
+        <p style="color: red;">{{ message }}</p>
+    {% endfor %}
+{% endif %}
+
+{% if request.user.is_authenticated %}
+    <a href="{% url 'apply_job' job.id %}">Apply Now</a>
+{% else %}
+    <p><a href="{% url 'login' %}">Log in</a> to apply.</p>
+{% endif %}
+
+<br>
+<a href="{% url 'job_list' %}">← Back to jobs</a>
+
+</body>
+</html>

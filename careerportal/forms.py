@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Company
+from .models import Company, Job , Application 
 
 class RegisterForm(UserCreationForm):
     USER_TYPE_CHOICES = (
@@ -65,3 +65,33 @@ class RegisterForm(UserCreationForm):
     
     # - Meta defines how the form maps to the database model.
     # - Email is included to support user identification and communication.
+
+
+# adding forms for Jobs
+class JobForm(forms.ModelForm):
+    class Meta:
+        model = Job
+        fields = ['title', 'description', 'deadline']
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
+            'deadline': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+        }
+
+#adding forms for Application
+
+class ApplicationForm(forms.ModelForm):
+    class Meta:
+        model = Application
+        fields = ['text', 'cv']
+        widgets = {
+            'text': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 5,
+                'placeholder': 'Write your cover letter here...'
+            }),
+        }
+        labels = {
+            'text': 'Cover Letter',
+            'cv': 'Attach CV (optional)',
+        }
