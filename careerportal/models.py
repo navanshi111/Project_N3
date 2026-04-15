@@ -40,11 +40,23 @@ class Employee(User):
 # Source is https://docs.djangoproject.com/en/5.2/intro/tutorial02/
 # Source = Jan
 #starting jobs: (also sourced from django2tutorials)
+#class Job(models.Model):
+    #title = models.CharField(max_length=200)
+    #description = models.TextField()
+    #company = models.ForeignKey("Company", on_delete=models.CASCADE)
+    #created_at = models.DateTimeField(auto_now_add=True)
+
+
 class Job(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
-    company = models.ForeignKey("Company", on_delete=models.CASCADE)
+    deadline = models.DateField(default='2026-12-31')  # temporary default
     created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(
+        Employee,
+        on_delete=models.CASCADE,
+        null=True
+    )
 
     def __str__(self):
         return self.title
