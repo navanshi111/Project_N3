@@ -1,9 +1,13 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import Applicant, Employee, Company
+from .models import Job
 
 # Company
 admin.site.register(Company)
+
+#Job
+admin.site.register(Job)
 
 # Applicant Admin
 @admin.register(Applicant)

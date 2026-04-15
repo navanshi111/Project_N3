@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm
-from .models import Applicant, Employee, Company
+from .models import Applicant, Employee, Company, Job
 
 def register_view(request):
     if request.method == 'POST':
@@ -71,3 +71,9 @@ def home(request):
     return render(request, 'careerportal/home.html')
 
 # Source: https://docs.djangoproject.com/en/5.2/intro/tutorial03/
+
+#start job
+
+def job_list(request):
+    jobs = Job.objects.all()
+    return render(request, "careerportal/jobs.html", {"jobs": jobs})

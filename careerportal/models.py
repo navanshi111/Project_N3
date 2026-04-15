@@ -39,3 +39,12 @@ class Employee(User):
 
 # Source is https://docs.djangoproject.com/en/5.2/intro/tutorial02/
 # Source = Jan
+#starting jobs: (also sourced from django2tutorials)
+class Job(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    company = models.ForeignKey("Company", on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title

@@ -1,13 +1,15 @@
 from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
+from .views import job_list
 
 urlpatterns = [
     path('', views.home, name='home'),
     path('register/', views.register_view, name='register'),
     path('profile/', views.profile_view, name='profile'),
     path('login/',auth_views.LoginView.as_view(template_name='careerportal/login.html'),name='login'),
-    path('logout/', auth_views.LogoutView.as_view(next_page='home'), name='logout'),]
+    path('logout/', auth_views.LogoutView.as_view(next_page='home'), name='logout'),
+    path("jobs/", job_list, name="jobs"),]
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -17,4 +19,7 @@ urlpatterns = [
         template_name='careerportal/login.html',
         redirect_authenticated_user=True), name='login'),
     path('logout/', auth_views.LogoutView.as_view(
-        next_page='home'), name='logout'),]
+        next_page='home'), name='logout'),
+    path("jobs/", job_list, name="jobs"), ]
+
+# there should only be one urlpatterns
