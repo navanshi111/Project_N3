@@ -6,8 +6,12 @@
 
 {% for job in jobs%}
     <div>
-        <h2>{{ job.title }}</h2>
+        <h2>
+            <a href= "{% url 'job_detail' job.id %}">
+                {{ job.title }}
+            </a>
+        </h2>
         <p>{{ job.description }}</p>
-        <p>{{ job.company.name }}</p>
+        <p>Posted by {{ job.created_by.username }}</p>
     </div>
 {% endfor %}

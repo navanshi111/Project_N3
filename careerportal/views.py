@@ -79,7 +79,7 @@ def home(request):
 #start job
 
 def job_list(request):
-    jobs = Job.objects.all()
+    jobs = Job.objects.all().order_by('-created_at')
     return render(request, "careerportal/jobs.html", {"jobs": jobs})
 
 def job_detail(request, job_id):
