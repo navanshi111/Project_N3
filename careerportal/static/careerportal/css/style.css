@@ -1,41 +1,198 @@
-/* CareerPortal Custom Styles */
+/* --- Google Font import --- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lato:wght@300;400;700&display=swap');
 
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f8f9fa;
-    color: #333;
+/* --- Colour variables --- */
+:root {
+    --pink:        #f4b8c1;   /* blush pink — main brand colour */
+    --pink-dark:   #e8919e;   /* darker pink — hover states */
+    --pink-light:  #fdeef0;   /* very light pink — backgrounds */
+    --blue:        #b8d4f4;   /* powder blue — accent */
+    --blue-dark:   #8ab8ef;   /* darker blue — hover states */
+    --blue-light:  #eef4fd;   /* very light blue — backgrounds */
+    --white:       #ffffff;
+    --off-white:   #fafafa;
+    --text-dark:   #3a3a3a;   /* main body text */
+    --text-muted:  #888888;   /* secondary text */
+    --border:      #e8e0e2;   /* subtle divider lines */
 }
 
-/* Navbar */
+/* --- Base --- */
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    background-color: var(--off-white);
+    color: var(--text-dark);
+    line-height: 1.7;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+a {
+    color: var(--pink-dark);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--blue-dark);
+    text-decoration: underline;
+}
+
+/* --- Navbar --- */
+.navbar {
+    background-color: var(--pink) !important;
+    border-bottom: 2px solid var(--pink-dark);
+    padding: 0.8rem 0;
+}
+
 .navbar-brand {
-    font-weight: bold;
-    font-size: 1.4rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--white) !important;
     letter-spacing: 0.5px;
 }
 
-/* Job cards on the jobs list page */
-.job-card {
-    border-radius: 8px;
-    transition: box-shadow 0.2s ease;
-    border: 1px solid #dee2e6;
+.nav-link {
+    color: var(--white) !important;
+    font-size: 0.95rem;
+    font-weight: 400;
+    padding: 0.4rem 0.9rem !important;
+    border-radius: 20px;
+    transition: background 0.2s ease;
 }
 
-.job-card:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-    border-color: #0d6efd;
+.nav-link:hover {
+    background-color: var(--pink-dark);
+    text-decoration: none;
 }
 
-/* Page headings */
-h1, h2 {
+/* --- Buttons --- */
+.btn-primary {
+    background-color: var(--pink);
+    border-color: var(--pink-dark);
+    color: var(--white);
+    border-radius: 20px;
+    padding: 0.45rem 1.4rem;
     font-weight: 600;
+    transition: background 0.2s ease;
 }
 
-/* Footer (optional) */
+.btn-primary:hover {
+    background-color: var(--pink-dark);
+    border-color: var(--pink-dark);
+    color: var(--white);
+}
+
+.btn-outline-primary {
+    border-color: var(--pink);
+    color: var(--pink-dark);
+    border-radius: 20px;
+    padding: 0.45rem 1.4rem;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--pink-light);
+    border-color: var(--pink-dark);
+    color: var(--pink-dark);
+}
+
+.btn-secondary {
+    background-color: var(--blue);
+    border-color: var(--blue-dark);
+    color: var(--white);
+    border-radius: 20px;
+    padding: 0.45rem 1.4rem;
+}
+
+.btn-secondary:hover {
+    background-color: var(--blue-dark);
+    border-color: var(--blue-dark);
+    color: var(--white);
+}
+
+/* --- Cards (used for job listings) --- */
+.card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background-color: var(--white);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 0 6px 20px rgba(244, 184, 193, 0.3);
+    transform: translateY(-2px);
+}
+
+.card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+}
+
+.card-body {
+    padding: 1.4rem;
+}
+
+/* --- Forms --- */
+.form-control {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease;
+}
+
+.form-control:focus {
+    border-color: var(--pink);
+    box-shadow: 0 0 0 3px rgba(244, 184, 193, 0.25);
+    outline: none;
+}
+
+label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    color: var(--text-dark);
+}
+
+/* --- Alerts (success/error messages) --- */
+.alert-success {
+    background-color: var(--blue-light);
+    border-color: var(--blue);
+    color: #2a5a8a;
+}
+
+.alert-danger {
+    background-color: var(--pink-light);
+    border-color: var(--pink);
+    color: #a03040;
+}
+
+/* --- Page title section --- */
+.page-header {
+    background: linear-gradient(135deg, var(--pink-light), var(--blue-light));
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    margin-bottom: 0.3rem;
+    font-size: 2rem;
+}
+
+/* --- Footer --- */
 footer {
-    background-color: #212529;
-    color: #adb5bd;
+    background-color: var(--pink);
+    color: var(--white);
     padding: 1.5rem 0;
-    margin-top: 3rem;
+    margin-top: 4rem;
     text-align: center;
     font-size: 0.9rem;
 }
+
+/* --- Google Font import --- */
