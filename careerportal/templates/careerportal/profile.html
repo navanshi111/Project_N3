@@ -1,34 +1,44 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Profile</title>
-</head>
-<body>
+{% extends "careerportal/base.html" %}
+{% block title%}Profile{% endblock %}
 
-<h2>Profile</h2>
+{% block content %}
 
-<!-- Messages -->
+<h1> My Profile</h1>
+<p class="text-muted"> View Your Profile</p>
+
 {% if messages %}
     {% for message in messages %}
-        <p style="color: green;">{{ message }}</p>
-    {% endfor %}
+    <div class="alert alert-success">
+    {{ message }}
+    </div>
+{% endfor %}
 {% endif %}
 
-<p><strong>Username:</strong> {{ user.username }}</p>
-<p><strong>Email:</strong> {{ user.email }}</p>
-
-<hr>
+<div class="card mb-4">
+    <div class="card-body">
+        <h2 class="card-title">{{ user.username }}</h2>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    </div>
+</div>
 
 {% if applicant %}
-    <h3>Applicant Profile</h3>
+    <div class="card mb-4">
+        <div class="card-body">
+            <h2 class="card-title">Applicant Profile </h2>
 
-    <p><strong>Bio:</strong> {{ applicant.bio }}</p>
-    <p><strong>Summary:</strong> {{ applicant.summary }}</p>
+            <p><strong>Bio:</strong> {{ applicant.bio }}</p>
+            <p><strong>Summary:</strong> {{ applicant.summary }}</p>
+        </div>
+    </div>
 
 {% elif employee %}
-    <h3>Employee Profile</h3>
-
-    <p><strong>Company:</strong> {{ employee.company.name }}</p>
+    <div class="card mb-4">
+        <div class="card-body">
+             <h2 class="card-title">Employee Profile</h2>
+          
+             <p><strong>Company:</strong> {{ employee.company.name }}</p>
+        </div>
+    </div>
 
 {% else %}
     <p style="color: red;">No role assigned.</p>
@@ -43,5 +53,4 @@
     <button type="submit">Logout</button>
 </form>
 
-</body>
-</html>
+{% endblock %}
