@@ -1,24 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head><title>Apply for {{ job.title }}</title></head>
-<body>
+{% extends "careerportal/base.html" %}
 
-<h2>Apply for: {{ job.title }}</h2>
+{% block title %}Apply for Job{% endblock %}
+
+{% block content %}
+
+<h1>Apply for: {{ job.title }}</h1>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h2 class="card-title">{{ job.title }}</h2> 
 
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
 
-    <label>Cover Letter:</label><br>
-    {{ form.text }}<br><br>
+    <p>
+    <strong>Cover Letter:</strong><br>
+    {{ form.text }}
+    </p>
 
-    <label>Attach CV (optional):</label><br>
-    {{ form.cv }}<br><br>
+    <p>
+    <strong>Attach CV (optional):</strong>
+    {{ form.cv }}
+    </p>
 
     <button type="submit">Submit Application</button>
 </form>
 
-<br>
 <a href="{% url 'job_detail' job.id %}">← Back to job</a>
 
-</body>
-</html>
+{% endblock %}
