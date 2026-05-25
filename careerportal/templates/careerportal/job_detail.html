@@ -1,11 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head><title>{{ job.title }}</title></head>
-<body>
+{% extends "careerportal/base.html" %}
 
-<h2>{{ job.title }}</h2>
-<p>{{ job.description }}</p>
-<p><strong>Deadline:</strong> {{ job.deadline }}</p>
+{% block title %}Job Details{% endblock %}
+
+{% block content %}
+
+<h1>Job Details</h1>
+<p class="text-muted">View Information About this Job Opportunity</p>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h2 class="card-title">{{ job.title }}</h2>
+        <p>
+            {{ job.description}}
+        </p>
+        <p>
+            <strong>Deadline:</strong> {{ job.deadline }}
+        </p>
+    </div>
+</div>
 
 {% if messages %}
     {% for message in messages %}
@@ -22,5 +34,4 @@
 <br>
 <a href="{% url 'job_list' %}">← Back to jobs</a>
 
-</body>
-</html>
+{% endblock %}
