@@ -55,6 +55,15 @@ class Job(models.Model):
         ("phD", "PhD"),
         ("post_doc", "Post-Doctorate")
     ]
+    JOB_TYPE_CHOICES = [
+        ('full_time', 'Full Time'),
+        ('part_time', 'Part Time'),
+        ('internship', 'Internship'),
+    ]
+    PAY_CHOICES = [
+        ('paid', 'Paid'),
+        ('unpaid', 'Unpaid'),
+    ]
 
     title = models.CharField(max_length=200)
     description = models.TextField()
@@ -69,6 +78,17 @@ class Job(models.Model):
         Employee,
         on_delete=models.CASCADE,
         null=True
+    )
+    
+    job_type = models.CharField(
+        max_length=20,
+        choices=JOB_TYPE_CHOICES,
+        default='full_time'
+    )
+    pay_status = models.CharField(
+        max_length=10,
+        choices=PAY_CHOICES,
+        default='paid'
     )
 
     def __str__(self):
