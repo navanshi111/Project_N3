@@ -80,7 +80,16 @@ def home(request):
 
 def job_list(request):
     jobs = Job.objects.all().order_by('-created_at')
-    return render(request, "careerportal/jobs.html", {"jobs": jobs})
+
+    degree = request.GET.get('degree')
+
+    if degree:
+        jobs = jobs.filter(required_degree=degree)
+
+    return render(request, "careerportal/jobs.html", 
+        {"jobs": jobs,
+         "degree_choices": Job.Degree_Choices,
+        })
 
 def job_detail(request, job_id):
     job = get_object_or_404(Job, pk=job_id)
