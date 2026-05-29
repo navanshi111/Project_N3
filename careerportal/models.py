@@ -48,8 +48,21 @@ class Employee(User):
 
 
 class Job(models.Model):
+    DEGREE_CHOICES = [
+        ("high_school", "High School Diploma"),
+        ("bachelors", "Bachelor's Degree"),
+        ("masters", "Master's Degree"),
+        ("phD", "PhD"),
+        ("post_doc", "Post-Doctorate")
+    ]
+
     title = models.CharField(max_length=200)
     description = models.TextField()
+    required_degree = models.CharField(
+        max_length=50,
+        choices=DEGREE_CHOICES,
+        default="bachelors"
+    )
     deadline = models.DateField(default='2026-12-31')  # temporary default
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(
