@@ -88,7 +88,7 @@ def job_list(request):
 
     return render(request, "careerportal/jobs.html", 
         {"jobs": jobs,
-         "degree_choices": Job.Degree_Choices,
+         "degree_choices": Job.DEGREE_CHOICES,
         })
 
 def job_detail(request, job_id):
