@@ -88,7 +88,7 @@ def job_list(request):
 
     if degree:
         jobs = jobs.filter(required_degree=degree)
-     if job_type:
+    if job_type:
         jobs = jobs.filter(job_type=job_type)
     if pay_status:
         jobs = jobs.filter(pay_status=pay_status)
