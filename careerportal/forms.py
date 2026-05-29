@@ -71,7 +71,7 @@ class RegisterForm(UserCreationForm):
 class JobForm(forms.ModelForm):
     class Meta:
         model = Job
-        fields = ['title', 'description', 'deadline']
+        fields = ['title', 'description', 'required_degree', 'deadline']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
