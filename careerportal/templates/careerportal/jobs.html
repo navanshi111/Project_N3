@@ -9,23 +9,38 @@
 
 <form method="GET" class="mb-4">
     <label>Filter by Required Degree:</label><br>
-
     <select name="degree" class="form-control">
         <option value="">All Degrees</option>
-
         {% for value, label in degree_choices %}
-            <option value= "{{ value }}">
-                {{ label }}
-            </option>
+            <option value="{{ value }}">{{ label }}</option>
         {% endfor %}
     </select>
 
     <br>
 
-    <button type="submit" class="btn btn-primary">
-        Filter
-    </button>
+    <label>Filter by Job Type:</label><br>
+    <select name="job_type" class="form-control">
+        <option value="">All Job Types</option>
+        {% for value, label in job_type_choices %}
+            <option value="{{ value }}">{{ label }}</option>
+        {% endfor %}
+    </select>
+
+    <br>
+
+    <label>Filter by Pay:</label><br>
+    <select name="pay_status" class="form-control">
+        <option value="">Paid or Unpaid</option>
+        {% for value, label in pay_choices %}
+            <option value="{{ value }}">{{ label }}</option>
+        {% endfor %}
+    </select>
+
+    <br>
+
+    <button type="submit" class="btn btn-primary">Filter</button>
 </form>
+
 
 {% if request.user.is_authenticated %}
     <a href="{% url 'post_job' %}" class="btn btn-primary mb-4">

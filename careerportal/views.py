@@ -82,13 +82,22 @@ def job_list(request):
     jobs = Job.objects.all().order_by('-created_at')
 
     degree = request.GET.get('degree')
+    job_type = request.GET.get('job_type')
+    pay_status = request.GET.get('pay_status')
+
 
     if degree:
         jobs = jobs.filter(required_degree=degree)
+     if job_type:
+        jobs = jobs.filter(job_type=job_type)
+    if pay_status:
+        jobs = jobs.filter(pay_status=pay_status)
 
     return render(request, "careerportal/jobs.html", 
         {"jobs": jobs,
          "degree_choices": Job.DEGREE_CHOICES,
+         "job_type_choices": Job.JOB_TYPE_CHOICES,
+         "pay_choices": Job.PAY_CHOICES,
         })
 
 def job_detail(request, job_id):
