@@ -43,6 +43,20 @@
 {% endif %}
 
 {% if request.user.is_authenticated %}
+    <form method="POST" action="{% url 'toggle_save_job' job.id %}">
+        {% csrf_token %}
+        {% if is_saved %}
+            <button type="submit" class="btn btn-outline-primary">★ Unsave Job</button>
+        {% else %}
+            <button type="submit" class="btn btn-outline-primary">☆ Save Job</button>
+        {% endif %}
+    </form>
+{% endif %}
+
+
+<br>
+
+{% if request.user.is_authenticated %}
     <a href="{% url 'apply_job' job.id %}">Apply Now</a>
 {% else %}
     <p><a href="{% url 'login' %}">Log in</a> to apply.</p>
