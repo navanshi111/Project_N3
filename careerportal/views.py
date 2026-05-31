@@ -67,9 +67,21 @@ def profile_view(request):
     except Employee.DoesNotExist:
         pass
 
+    applications = []
+    posted_jobs = []
+
+    if applicant:
+        applications = Application.objects.filter(applicant=applicant).order_by('-created_at')
+
+    if employee:
+        posted_jobs = Job.objects.filter(created_by=employee).order_by('-created_at')
+
     return render(request, 'careerportal/profile.html', {
         'applicant': applicant,
-        'employee': employee,})
+        'employee': employee,
+        'applications': applications,
+        'posted_jobs': posted_jobs,
+    })
 
 def home(request):
     return render(request, 'careerportal/home.html')
@@ -126,7 +138,7 @@ def post_job(request):
 
     return render(request, 'careerportal/post_job.html', {'form': form})
 
-# editing for applications 
+ 
 @login_required
 def apply_job(request, job_id):
     job = get_object_or_404(Job, pk=job_id)
@@ -137,7 +149,7 @@ def apply_job(request, job_id):
         messages.error(request, "Only applicants can apply for jobs.")
         return redirect('job_detail', job_id=job_id)
 
-    # Prevent applying twice
+    # did this to prevent applying twice
     already_applied = Application.objects.filter(job=job, applicant=applicant).exists()
     if already_applied:
         messages.warning(request, "You have already applied for this job.")
