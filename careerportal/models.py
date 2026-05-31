@@ -65,6 +65,12 @@ class Job(models.Model):
         ('unpaid', 'Unpaid'),
     ]
 
+    contact_info = models.TextField(
+        help_text="Include contact email, phone, and/or company website link.",
+        blank=True,
+        default=''
+    )
+
     title = models.CharField(max_length=200)
     description = models.TextField()
     required_degree = models.CharField(
