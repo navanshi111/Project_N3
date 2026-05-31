@@ -38,4 +38,5 @@ urlpatterns = [
     path('jobs/post/', views.post_job, name='post_job'),
     path('jobs/<int:job_id>/apply/', views.apply_job, name='apply_job'),
     path('my-applications/', views.my_applications, name='my_applications'),
+    path('jobs/<int:job_id>/save/', views.toggle_save_job, name='toggle_save_job'),
 ]
