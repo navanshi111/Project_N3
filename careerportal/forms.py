@@ -63,23 +63,32 @@ class RegisterForm(UserCreationForm):
 
         return cleaned_data
     
-    # - Meta defines how the form maps to the database model.
-    # - Email is included to support user identification and communication.
+    #  Meta defines how the form maps to the database model.
+    #  Email is included to support user identification.
 
 
-# adding forms for Jobs
+
 class JobForm(forms.ModelForm):
     class Meta:
         model = Job
-        fields = ['title', 'description', 'required_degree', 'deadline']
+        fields = ['title', 'description', 'required_degree', 'deadline', 'job_type', 'pay_status', 'contact_info']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
             'required_degree': forms.Select(attrs={'class': 'form-control'}),
             'deadline': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'job_type': forms.Select(attrs={'class': 'form-control'}),
+            'pay_status': forms.Select(attrs={'class': 'form-control'}),
+            'contact_info': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 3,
+                'placeholder': 'e.g. contact@company.com | +47 123 45 678 | www.company.com'
+            }),
+        }
+        labels = {
+            'contact_info': 'Contact Information',
         }
 
-#adding forms for Application
 
 class ApplicationForm(forms.ModelForm):
     class Meta:
