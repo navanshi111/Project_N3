@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import get_object_or_404
-from .models import Applicant, Employee, Company, Job, Application 
+from .models import Applicant, Employee, Company, Job, Application, SavedJob
 from .forms import RegisterForm, JobForm, ApplicationForm
 
 
@@ -72,6 +72,7 @@ def profile_view(request):
 
     if applicant:
         applications = Application.objects.filter(applicant=applicant).order_by('-created_at')
+        saved_jobs = SavedJob.objects.filter(applicant=applicant).order_by('-saved_at')
 
     if employee:
         posted_jobs = Job.objects.filter(created_by=employee).order_by('-created_at')
@@ -81,6 +82,7 @@ def profile_view(request):
         'employee': employee,
         'applications': applications,
         'posted_jobs': posted_jobs,
+        'saved_jobs': saved_jobs,
     })
 
 def home(request):
@@ -114,7 +116,19 @@ def job_list(request):
 
 def job_detail(request, job_id):
     job = get_object_or_404(Job, pk=job_id)
-    return render(request, 'careerportal/job_detail.html', {'job': job})
+
+    is_saved = False
+    if request.user.is_authenticated:
+        try:
+            applicant = Applicant.objects.get(id=request.user.id)
+            is_saved = SavedJob.objects.filter(applicant=applicant, job=job).exists()
+        except Applicant.DoesNotExist:
+            pass
+
+
+    return render(request, 'careerportal/job_detail.html', {
+        'job': job,
+        'is_saved':is_saved})
 
 
 @login_required
@@ -168,6 +182,27 @@ def apply_job(request, job_id):
         form = ApplicationForm()
 
     return render(request, 'careerportal/apply_job.html', {'form': form, 'job': job})
+
+@login_required
+def toggle_save_job(request, job_id):
+    job = get_object_or_404(Job, pk=job_id)
+
+    try:
+        applicant = Applicant.objects.get(id=request.user.id)
+    except Applicant.DoesNotExist:
+        messages.error(request, "Only applicants can save jobs.")
+        return redirect('job_detail', job_id=job_id)
+
+    saved = SavedJob.objects.filter(applicant=applicant, job=job).first()
+
+    if saved:
+        saved.delete()
+        messages.success(request, "Job removed from saved jobs.")
+    else:
+        SavedJob.objects.create(applicant=applicant, job=job)
+        messages.success(request, "Job saved successfully!")
+
+    return redirect('job_detail', job_id=job_id)
 
 
 @login_required
