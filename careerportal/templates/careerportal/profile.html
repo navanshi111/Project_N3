@@ -52,7 +52,9 @@
                     </div>
                 {% endfor %}
             {% else %}
-                <p class="text-muted">You have not applied for any jobs yet.</p>
+                <div class="alert alert-info">
+                    You have not applied for any jobs yet.
+                </div>
             {% endif %}
         </div>
     </div>
@@ -74,7 +76,9 @@
                     </div>
                 {% endfor %}
             {% else %}
-                <p class="text-muted">You have not saved any jobs yet.</p>
+                <div class="alert alert-info">
+                    You have not saved any jobs yet.
+                </div>
             {% endif %}
         </div>
     </div>
@@ -112,14 +116,18 @@
                     </div>
                 {% endfor %}
             {% else %}
-                <p class="text-muted">You have not posted any jobs yet.</p>
+                <div class="alert alert-info">
+                    You have not posted any jobs yet.
+                </div>
             {% endif %}
         </div>
     </div>
 
 {% else %}
 
-    <p style="color: red;">No role assigned.</p>
+    <div class="alert alert-danger">
+        No role assigned.
+    </div>
 
 {% endif %}
 
