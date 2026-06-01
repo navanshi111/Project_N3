@@ -158,6 +158,39 @@ def job_applications(request, job_id):
 
 
 @login_required
+def update_application_status(request, application_id):
+
+    try:
+        employee = Employee.objects.get(id=request.user.id)
+    except Employee.DoesNotExist:
+        messages.error(
+            request,"Only employees can update application status.")
+        return redirect('home')
+
+    application = get_object_or_404(Application, id=application_id)
+
+    if application.job.created_by != employee:
+        messages.error(request, "You can only manage applications for your own jobs.")
+        return redirect('profile')
+
+    if request.method == "POST":
+
+        new_status = request.POST.get("status")
+
+        if new_status in [
+            "reviewing",
+            "accepted",
+            "rejected"]:
+            
+            application.status = new_status
+            application.save()
+
+            messages.success(request, "Application status updated.")
+
+    return redirect('job_applications', job_id=application.job.id)
+
+
+@login_required
 def post_job(request):
     try:
         employee = Employee.objects.get(id=request.user.id)

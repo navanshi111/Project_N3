@@ -1,27 +1,100 @@
-<h2>Applications for {{ job.title }}</h2>
+{% extends "careerportal/base.html" %}
+
+{% block title %}Applications{% endblock %}
+
+{% block content %}
+
+<h1>Applications for {{ job.title }}</h1>
+
+<p class="text-muted">
+    Review and manage applications submitted for this position.
+</p>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
 
 {% for application in applications %}
-<div class="card mb-3">
-    <div class="card-body">
-        <h5>{{ application.applicant.username }}</h5>
 
-        <p>
-            <strong>Status:</strong>
-            {{ application.get_status_display }}
-        </p>
+    <div class="card mb-3 shadow-sm">
+        <div class="card-body">
 
-        <p>
-            <strong>Cover Letter:</strong><br>
-            {{ application.text }}
-        </p>
+            <h5 class="card-title">
+                {{ application.applicant.username }}
+            </h5>
 
-        {% if application.cv %}
-            <a href="{{ application.cv.url }}">
-                Download CV
-            </a>
-        {% endif %}
+            <p>
+                <strong>Status:</strong>
+                {{ application.get_status_display }}
+            </p>
+
+            <p>
+                <strong>Applied:</strong>
+                {{ application.created_at|date:"d M Y" }}
+            </p>
+
+            <p>
+                <strong>Cover Letter:</strong><br>
+                {{ application.text }}
+            </p>
+
+            {% if application.cv %}
+                <p>
+                    <a href="{{ application.cv.url }}"
+                       class="btn btn-outline-secondary btn-sm"
+                       target="_blank">
+                        Download CV
+                    </a>
+                </p>
+            {% endif %}
+
+            <hr>
+
+            <form method="POST"
+                  action="{% url 'update_application_status' application.id %}">
+                {% csrf_token %}
+
+                <button type="submit"
+                        name="status"
+                        value="reviewing"
+                        class="btn btn-warning btn-sm">
+                    Reviewing
+                </button>
+
+                <button type="submit"
+                        name="status"
+                        value="accepted"
+                        class="btn btn-success btn-sm">
+                    Accept
+                </button>
+
+                <button type="submit"
+                        name="status"
+                        value="rejected"
+                        class="btn btn-danger btn-sm">
+                    Reject
+                </button>
+
+            </form>
+
+        </div>
     </div>
-</div>
+
 {% empty %}
-<p>No applications yet.</p>
+
+    <div class="alert alert-info">
+        No applications have been submitted yet.
+    </div>
+
 {% endfor %}
+
+<a href="{% url 'profile' %}"
+   class="btn btn-secondary">
+    Back to Profile
+</a>
+
+{% endblock %}
