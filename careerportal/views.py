@@ -115,24 +115,32 @@ def job_list(request):
         {"jobs": jobs,
          "degree_choices": Job.DEGREE_CHOICES,
          "job_type_choices": Job.JOB_TYPE_CHOICES,
-         "pay_choices": Job.PAY_CHOICES,
-        })
+         "pay_choices": Job.PAY_CHOICES,})
 
 def job_detail(request, job_id):
     job = get_object_or_404(Job, pk=job_id)
 
     is_saved = False
+    is_applicant = False
+
     if request.user.is_authenticated:
         try:
             applicant = Applicant.objects.get(id=request.user.id)
-            is_saved = SavedJob.objects.filter(applicant=applicant, job=job).exists()
+
+            is_applicant = True
+
+            is_saved = SavedJob.objects.filter(
+                applicant=applicant,
+                job=job
+            ).exists()
+
         except Applicant.DoesNotExist:
             pass
 
-
     return render(request, 'careerportal/job_detail.html', {
         'job': job,
-        'is_saved':is_saved})
+        'is_saved': is_saved,
+        'is_applicant': is_applicant,})
 
 
 @login_required

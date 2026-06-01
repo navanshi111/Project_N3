@@ -7,14 +7,6 @@
 <h1>Job Details</h1>
 <p class="text-muted">View Information About this Job Opportunity</p>
 
-{% if messages %}
-    {% for message in messages %}
-        <div class="alert alert-info">
-            {{ message }}
-        </div>
-    {% endfor %}
-{% endif %}
-
 <div class="card mb-4">
     <div class="card-body">
 
@@ -52,7 +44,7 @@
     </div>
 </div>
 
-{% if request.user.is_authenticated %}
+{% if request.user.is_authenticated and is_applicant %}
 
 <div class="d-flex gap-2 mb-4">
 
@@ -80,7 +72,7 @@
 
 </div>
 
-{% else %}
+{% elif not request.user.is_authenticated %}
 
 <p>
     <a href="{% url 'login' %}">Log in</a> to save or apply for jobs.
