@@ -7,62 +7,90 @@
 <h1>Job Details</h1>
 <p class="text-muted">View Information About this Job Opportunity</p>
 
-<div class="card mb-4">
-    <div class="card-body">
-        <h2 class="card-title">{{ job.title }}</h2>
-        <p>
-            {{ job.description}}
-        </p>
-        <p>
-            <strong>Required Degree:</strong> {{ job.get_required_degree_display }} 
-        </p>
-        <p>
-            <strong>Job Type:</strong> {{ job.get_job_type_display }}
-        </p>
-
-        <p>
-            <strong>Pay:</strong> {{ job.get_pay_status_display }}
-        </p>
-
-        <p>
-            <strong>Deadline:</strong> {{ job.deadline }}
-        </p>
-
-        <p>
-            <strong>Contact Information:</strong><br> 
-            {{ job.contact_info }}
-        </p>
-        
-    </div>
-</div>
-
 {% if messages %}
     {% for message in messages %}
-        <p style="color: red;">{{ message }}</p>
+        <div class="alert alert-info">
+            {{ message }}
+        </div>
     {% endfor %}
 {% endif %}
 
+<div class="card mb-4">
+    <div class="card-body">
+
+        <h2 class="card-title">{{ job.title }}</h2>
+
+        <p>
+            {{ job.description }}
+        </p>
+
+        <p>
+            <strong>Required Degree:</strong>
+            {{ job.get_required_degree_display }}
+        </p>
+
+        <p>
+            <strong>Job Type:</strong>
+            {{ job.get_job_type_display }}
+        </p>
+
+        <p>
+            <strong>Pay:</strong>
+            {{ job.get_pay_status_display }}
+        </p>
+
+        <p>
+            <strong>Deadline:</strong>
+            {{ job.deadline }}
+        </p>
+
+        <p>
+            <strong>Contact Information:</strong><br>
+            {{ job.contact_info }}
+        </p>
+
+    </div>
+</div>
+
 {% if request.user.is_authenticated %}
-    <form method="POST" action="{% url 'toggle_save_job' job.id %}">
+
+<div class="d-flex gap-2 mb-4">
+
+    <form method="POST"
+          action="{% url 'toggle_save_job' job.id %}">
         {% csrf_token %}
+
         {% if is_saved %}
-            <button type="submit" class="btn btn-outline-primary">★ Unsave Job</button>
+            <button type="submit"
+                    class="btn btn-outline-primary">
+                ★ Unsave Job
+            </button>
         {% else %}
-            <button type="submit" class="btn btn-outline-primary">☆ Save Job</button>
+            <button type="submit"
+                    class="btn btn-outline-primary">
+                ☆ Save Job
+            </button>
         {% endif %}
     </form>
-{% endif %}
 
+    <a href="{% url 'apply_job' job.id %}"
+       class="btn btn-success">
+        📝 Apply Now
+    </a>
 
-<br>
+</div>
 
-{% if request.user.is_authenticated %}
-    <a href="{% url 'apply_job' job.id %}">Apply Now</a>
 {% else %}
-    <p><a href="{% url 'login' %}">Log in</a> to apply.</p>
+
+<p>
+    <a href="{% url 'login' %}">Log in</a> to save or apply for jobs.
+</p>
+
 {% endif %}
 
-<br>
-<a href="{% url 'job_list' %}">← Back to jobs</a>
+<a href="{% url 'job_list' %}"
+   class="btn btn-outline-secondary">
+    ← Back to Jobs
+</a>
 
 {% endblock %}
