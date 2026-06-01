@@ -87,7 +87,10 @@ def profile_view(request):
     })
 
 def home(request):
-    return render(request, 'careerportal/home.html')
+    jobs_count = Job.objects.count()
+
+    return render(request, 'careerportal/home.html',
+        {'jobs_count': jobs_count,})
 
 # Source: https://docs.djangoproject.com/en/5.2/intro/tutorial03/
 
