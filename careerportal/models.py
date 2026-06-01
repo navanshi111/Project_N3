@@ -103,8 +103,7 @@ class Job(models.Model):
     
 class Application(models.Model):
     STATUS_CHOICES = [
-        ('pending', 'Pending'),
-        ('reviewed', 'Reviewed'),
+        ('reviewing', 'Reviewing'),
         ('accepted', 'Accepted'),
         ('rejected', 'Rejected'),]
 
@@ -116,7 +115,7 @@ class Application(models.Model):
     status = models.CharField(
         max_length=20,
         choices=STATUS_CHOICES,
-        default='pending')
+        default='reviewing')
     created_at = models.DateTimeField(auto_now_add=True)
 
 class SavedJob(models.Model):
