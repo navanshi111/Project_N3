@@ -1,8 +1,8 @@
 {% extends "careerportal/base.html" %}
 
-{% block title %}My <Applications>{% endblock %}
+{% block title %}My Applications{% endblock %}
 
- {% block content %}
+{% block content %}
 <h1>My Applications</h1>
 <p class="text-muted">Track the Jobs You Have Applied For:</p>
 
@@ -10,15 +10,28 @@
     {% for app in applications %}
     <div class="card mb-4">
         <div class="card-body">
-            <h2 class="card-title"></h2>
-                <a href="{% url 'job_detail' app.job.id %}">{{ app.job.title }}</a>  
+
+            <h2 class="card-title">
+                <a href="{% url 'job_detail' app.job.id %}">
+                    {{ app.job.title }}
+                </a>
             </h2>
 
-        <p class="text-muted">Applied on: {{ app.created_at|date:"d M Y" }}</p>
+            <p class="text-muted">
+                Applied on: {{ app.created_at|date:"d M Y" }}
+            </p>
 
-        {% if app.cv %}
-            <a href="{{ app.cv.url }}" target="_blank">Download CV</a>
-        {% endif %}
+            <p>
+                <strong>Status:</strong>
+                {{ app.get_status_display }}
+            </p>
+
+            {% if app.cv %}
+                <a href="{{ app.cv.url }}" target="_blank">
+                    Download CV
+                </a>
+            {% endif %}
+
         </div>
     </div>
     {% endfor %}
@@ -26,13 +39,18 @@
 {% else %}
     <div class="card mb-4">
         <div class="card-body">
-    </div>You haven't applied to any jobs yet.</p>
-    <a href="{% url 'job_list' %}" class="btn btn-primary"> Browse Jobs </a>
+            <p>You haven't applied to any jobs yet.</p>
+            <a href="{% url 'job_list' %}" class="btn btn-primary">
+                Browse Jobs
+            </a>
         </div>
     </div>
 {% endif %}
 
 <br>
-<a href="{% url 'home' %}" class="btn btn-outline-primary"> Back to Homepage </a>
+
+<a href="{% url 'home' %}" class="btn btn-outline-primary">
+    Back to Homepage
+</a>
 
 {% endblock %}

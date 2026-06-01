@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from datetime import date
 
 class Company(models.Model):
     name = models.CharField(max_length=255, unique=True)
@@ -78,7 +79,7 @@ class Job(models.Model):
         choices=DEGREE_CHOICES,
         default="bachelors"
     )
-    deadline = models.DateField(default='2026-12-31')  # temporary default
+    deadline = models.DateField(default=date.today) # temporary default
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(
         Employee,
@@ -101,15 +102,22 @@ class Job(models.Model):
         return self.title
     
 class Application(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('reviewed', 'Reviewed'),
+        ('accepted', 'Accepted'),
+        ('rejected', 'Rejected'),]
+
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
     applicant = models.ForeignKey(Applicant, on_delete=models.CASCADE)
     text = models.TextField()
     cv = models.FileField(upload_to='cvs/', null=True, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return f"{self.applicant.username} - {self.job.title}"
-    
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default='pending')
+    created_at = models.DateTimeField(auto_now_add=True)
 
 class SavedJob(models.Model):
     applicant = models.ForeignKey(Applicant, on_delete=models.CASCADE)
