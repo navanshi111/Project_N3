@@ -12,8 +12,9 @@ class RegisterForm(UserCreationForm):
 
     email = forms.EmailField(required=True)
 
-    bio = forms.CharField(required=False)
-    summary = forms.CharField(required=False)
+    bio = forms.CharField(widget=forms.Textarea(attrs={'rows': 4}), required=False)
+
+    summary = forms.CharField(widget=forms.Textarea(attrs={'rows': 4}), required=False)
 
     OTHER_CHOICE = 'other'
 
