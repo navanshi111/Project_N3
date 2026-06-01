@@ -69,6 +69,7 @@ def profile_view(request):
 
     applications = []
     posted_jobs = []
+    saved_jobs = []
 
     if applicant:
         applications = Application.objects.filter(applicant=applicant).order_by('-created_at')
