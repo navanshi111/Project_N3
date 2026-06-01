@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from datetime import date
+from .validators import validate_pdf
 
 class Company(models.Model):
     name = models.CharField(max_length=255, unique=True)
@@ -110,7 +111,7 @@ class Application(models.Model):
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
     applicant = models.ForeignKey(Applicant, on_delete=models.CASCADE)
     text = models.TextField()
-    cv = models.FileField(upload_to='cvs/', null=True, blank=True)
+    cv = models.FileField(upload_to='cvs/', null=True, blank=True, validators=[validate_pdf])
 
     status = models.CharField(
         max_length=20,
