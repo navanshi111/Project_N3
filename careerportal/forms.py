@@ -92,6 +92,18 @@ class JobForm(forms.ModelForm):
 
 
 class ApplicationForm(forms.ModelForm):
+
+    def clean_cv(self):
+        cv = self.cleaned_data.get('cv')
+
+        if cv:
+            if not cv.name.lower().endswith('.pdf'):
+                raise forms.ValidationError(
+                    "Only PDF files are allowed."
+                )
+
+        return cv
+
     class Meta:
         model = Application
         fields = ['text', 'cv']
