@@ -10,14 +10,6 @@
     Review and manage applications submitted for this position.
 </p>
 
-{% if messages %}
-    {% for message in messages %}
-        <div class="alert alert-success">
-            {{ message }}
-        </div>
-    {% endfor %}
-{% endif %}
-
 {% for application in applications %}
 
     <div class="card mb-3 shadow-sm">
@@ -58,26 +50,32 @@
                   action="{% url 'update_application_status' application.id %}">
                 {% csrf_token %}
 
+                {% if application.status != 'reviewing' %}
                 <button type="submit"
                         name="status"
                         value="reviewing"
                         class="btn btn-warning btn-sm">
                     Reviewing
                 </button>
+                {% endif %}
 
+                {% if application.status != 'accepted' %}
                 <button type="submit"
                         name="status"
                         value="accepted"
                         class="btn btn-success btn-sm">
                     Accept
                 </button>
+                {% endif %}
 
+                {% if application.status != 'rejected' %}
                 <button type="submit"
                         name="status"
                         value="rejected"
                         class="btn btn-danger btn-sm">
                     Reject
                 </button>
+                {% endif %}
 
             </form>
 
