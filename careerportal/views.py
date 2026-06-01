@@ -133,6 +133,28 @@ def job_detail(request, job_id):
 
 
 @login_required
+def job_applications(request, job_id):
+    try:
+        employee = Employee.objects.get(id=request.user.id)
+    except Employee.DoesNotExist:
+        messages.error(request, "Only employees can view applications.")
+        return redirect('home')
+
+    job = get_object_or_404(Job, pk=job_id)
+
+    if job.created_by != employee:
+        messages.error(request, "You can only view applications for your own jobs.")
+        return redirect('profile')
+
+    applications = Application.objects.filter(job=job).order_by('-created_at')
+
+    return render(
+        request,
+        'careerportal/job_applications.html',
+        {'job': job, 'applications': applications,})
+
+
+@login_required
 def post_job(request):
     try:
         employee = Employee.objects.get(id=request.user.id)

@@ -1,29 +1,30 @@
 {% extends "careerportal/base.html" %}
-{% block title%}Profile{% endblock %}
+{% block title %}Profile{% endblock %}
 
 {% block content %}
 
-<h1> My Profile</h1>
+<h1>My Profile</h1>
 
 {% if messages %}
     {% for message in messages %}
-    <div class="alert alert-success">
-    {{ message }}
-    </div>
-{% endfor %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
 {% endif %}
 
 <div class="card mb-4">
     <div class="card-body">
         <h2 class="card-title">{{ user.username }}</h2>
-    <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
     </div>
 </div>
 
 {% if applicant %}
+
     <div class="card mb-4">
         <div class="card-body">
-            <h2 class="card-title">Applicant Profile </h2>
+            <h2 class="card-title">Applicant Profile</h2>
             <p><strong>Bio:</strong> {{ applicant.bio }}</p>
             <p><strong>Summary:</strong> {{ applicant.summary }}</p>
         </div>
@@ -32,13 +33,22 @@
     <div class="card mb-4">
         <div class="card-body">
             <h2 class="card-title">My Applications ({{ applications|length }})</h2>
+
             {% if applications %}
                 {% for application in applications %}
-                    <div class="mb-2">
+                    <div class="mb-3">
                         <a href="{% url 'job_detail' application.job.id %}">
                             {{ application.job.title }}
                         </a>
-                        <span class="text-muted"> — Applied: {{ application.created_at|date:"d M Y" }}</span>
+
+                        <span class="text-muted">
+                            — Applied: {{ application.created_at|date:"d M Y" }}
+                        </span>
+
+                        <br>
+
+                        <strong>Status:</strong>
+                        {{ application.get_status_display }}
                     </div>
                 {% endfor %}
             {% else %}
@@ -50,13 +60,17 @@
     <div class="card mb-4">
         <div class="card-body">
             <h2 class="card-title">Saved Jobs ({{ saved_jobs|length }})</h2>
+
             {% if saved_jobs %}
                 {% for saved in saved_jobs %}
                     <div class="mb-2">
                         <a href="{% url 'job_detail' saved.job.id %}">
                             {{ saved.job.title }}
                         </a>
-                        <span class="text-muted"> — Saved: {{ saved.saved_at|date:"d M Y" }}</span>
+
+                        <span class="text-muted">
+                            — Saved: {{ saved.saved_at|date:"d M Y" }}
+                        </span>
                     </div>
                 {% endfor %}
             {% else %}
@@ -66,24 +80,35 @@
     </div>
 
 {% elif employee %}
+
     <div class="card mb-4">
         <div class="card-body">
-             <h2 class="card-title">Employee Profile</h2>
-          
-             <p><strong>Company:</strong> {{ employee.company.name }}</p>
+            <h2 class="card-title">Employee Profile</h2>
+            <p><strong>Company:</strong> {{ employee.company.name }}</p>
         </div>
     </div>
-    
+
     <div class="card mb-4">
         <div class="card-body">
             <h2 class="card-title">Jobs Posted ({{ posted_jobs|length }})</h2>
+
             {% if posted_jobs %}
                 {% for job in posted_jobs %}
-                    <div class="mb-2">
+                    <div class="mb-3">
                         <a href="{% url 'job_detail' job.id %}">
                             {{ job.title }}
                         </a>
-                        <span class="text-muted"> — Posted: {{ job.created_at|date:"d M Y" }}</span>
+
+                        <span class="text-muted">
+                            — Posted: {{ job.created_at|date:"d M Y" }}
+                        </span>
+
+                        <br>
+
+                        <a href="{% url 'job_applications' job.id %}"
+                           class="btn btn-outline-primary btn-sm mt-2">
+                            View Applications
+                        </a>
                     </div>
                 {% endfor %}
             {% else %}
@@ -92,18 +117,23 @@
         </div>
     </div>
 
-
 {% else %}
+
     <p style="color: red;">No role assigned.</p>
+
 {% endif %}
 
 <hr>
 
-<a href="{% url 'home' %}">Back to Home</a><br><br>
+<a href="{% url 'home' %}" class="btn btn-secondary">
+    Back to Home
+</a>
 
-<form method="POST" action="{% url 'logout' %}">
+<form method="POST" action="{% url 'logout' %}" class="mt-3">
     {% csrf_token %}
-    <button type="submit">Logout</button>
+    <button type="submit" class="btn btn-danger">
+        Logout
+    </button>
 </form>
 
 {% endblock %}

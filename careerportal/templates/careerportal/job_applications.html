@@ -1,0 +1,27 @@
+<h2>Applications for {{ job.title }}</h2>
+
+{% for application in applications %}
+<div class="card mb-3">
+    <div class="card-body">
+        <h5>{{ application.applicant.username }}</h5>
+
+        <p>
+            <strong>Status:</strong>
+            {{ application.get_status_display }}
+        </p>
+
+        <p>
+            <strong>Cover Letter:</strong><br>
+            {{ application.text }}
+        </p>
+
+        {% if application.cv %}
+            <a href="{{ application.cv.url }}">
+                Download CV
+            </a>
+        {% endif %}
+    </div>
+</div>
+{% empty %}
+<p>No applications yet.</p>
+{% endfor %}
