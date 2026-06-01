@@ -8,24 +8,40 @@
 
 <div class="card mb-4">
     <div class="card-body">
-        <h2 class="card-title">{{ job.title }}</h2> 
 
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
+        <h2 class="card-title">{{ job.title }}</h2>
 
-    <p>
-    <strong>Cover Letter:</strong><br>
-    {{ form.text }}
-    </p>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
 
-    <p>
-    <strong>Attach CV (optional):</strong>
-    {{ form.cv }}
-    </p>
+            <p>
+                <strong>Cover Letter:</strong><br>
+                {{ form.text }}
+            </p>
 
-    <button type="submit">Submit Application</button>
-</form>
+            <p>
+                <strong>Attach CV (optional):</strong><br>
+                {{ form.cv }}
 
-<a href="{% url 'job_detail' job.id %}">← Back to job</a>
+                {% for error in form.cv.errors %}
+                    <div class="text-danger mt-1">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+            </p>
+
+            <button type="submit" class="btn btn-primary">
+                Submit Application
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+<a href="{% url 'job_detail' job.id %}"
+   class="btn btn-outline-secondary">
+    ← Back to Job
+</a>
 
 {% endblock %}
