@@ -1,0 +1,951 @@
+[
+{
+    "model": "careerportal.company",
+    "pk": 1,
+    "fields": {
+        "name": "CareerPortalHost"
+    }
+},
+{
+    "model": "careerportal.applicant",
+    "pk": 3,
+    "fields": {
+        "bio": "Job Seeking",
+        "summary": "Looking for Part-Time Job Opportunities"
+    }
+},
+{
+    "model": "careerportal.employee",
+    "pk": 2,
+    "fields": {
+        "company": 1
+    }
+},
+{
+    "model": "careerportal.job",
+    "pk": 1,
+    "fields": {
+        "contact_info": "You can contact us at telia@careerportal.no for more information.",
+        "title": "Customer Service Representative",
+        "description": "Assist Telia customers through email, phone, and chat. Help to resolve questions and provide a positive experience for the customers as they contact us.",
+        "required_degree": "bachelors",
+        "deadline": "2026-06-30",
+        "created_at": "2026-06-02T21:06:04.036Z",
+        "created_by": 2,
+        "job_type": "part_time",
+        "pay_status": "paid",
+        "location_type": "remote"
+    }
+},
+{
+    "model": "careerportal.job",
+    "pk": 2,
+    "fields": {
+        "contact_info": "Contact Us for More Info! +1 207 000 000 or summercamp@maine.com",
+        "title": "Camp Counselor",
+        "description": "Work at a summer camp in Maine! Experience as a camp counselor is preferred but not required. You must be at least 18 years old and have experience in a leadership role.",
+        "required_degree": "high_school",
+        "deadline": "2026-07-15",
+        "created_at": "2026-06-02T21:08:33.334Z",
+        "created_by": 2,
+        "job_type": "part_time",
+        "pay_status": "paid",
+        "location_type": "in_person"
+    }
+},
+{
+    "model": "careerportal.job",
+    "pk": 3,
+    "fields": {
+        "contact_info": "Contact us for more information at info@bi.no",
+        "title": "Social Media Marketing Intern",
+        "description": "Help BI Norwegian Business School with social media marketing campaigns! Fluency in Norwegian and English is preferred. No previous marketing experience is required, just a passion for sharing BI's mission Statement!",
+        "required_degree": "bachelors",
+        "deadline": "2026-08-01",
+        "created_at": "2026-06-02T21:10:36.136Z",
+        "created_by": 2,
+        "job_type": "internship",
+        "pay_status": "unpaid",
+        "location_type": "remote"
+    }
+},
+{
+    "model": "careerportal.job",
+    "pk": 4,
+    "fields": {
+        "contact_info": "Contact us through our website https://osloschools.no",
+        "title": "Elementary School Teacher",
+        "description": "Searching for a part-time 1st grade teacher in Oslo, Norway! This position is in Norwegian, but a C2 English level is preferred. A degree in early childhood education is required for this position.",
+        "required_degree": "bachelors",
+        "deadline": "2026-09-01",
+        "created_at": "2026-06-02T21:12:16.979Z",
+        "created_by": 2,
+        "job_type": "part_time",
+        "pay_status": "paid",
+        "location_type": "in_person"
+    }
+},
+{
+    "model": "careerportal.job",
+    "pk": 5,
+    "fields": {
+        "contact_info": "Please direct any questions to us via email: financialgroup@oslokommune.no",
+        "title": "Financial Analyst",
+        "description": "A master's degree and 5 years of experience in finance is required for this position. We are looking for an employee to develop and analyze predictive models to advance toward's Oslo Financial Group's KPIs.",
+        "required_degree": "masters",
+        "deadline": "2026-08-31",
+        "created_at": "2026-06-02T21:14:25.285Z",
+        "created_by": 2,
+        "job_type": "full_time",
+        "pay_status": "paid",
+        "location_type": "hybrid"
+    }
+},
+{
+    "model": "careerportal.job",
+    "pk": 6,
+    "fields": {
+        "contact_info": "Contact via email at internship@munchmuseum.no",
+        "title": "Munch Museum Internship",
+        "description": "Looking for a summer intern to work at the Munch Museum! We are looking for a passionate and dedicated student to join our team! Your role will primarily be managing social gatherings and information sessions for children and teens.",
+        "required_degree": "high_school",
+        "deadline": "2026-06-30",
+        "created_at": "2026-06-02T21:16:26.818Z",
+        "created_by": 2,
+        "job_type": "internship",
+        "pay_status": "unpaid",
+        "location_type": "in_person"
+    }
+},
+{
+    "model": "careerportal.job",
+    "pk": 7,
+    "fields": {
+        "contact_info": "Find us online! Our website is: https://webstartup.com",
+        "title": "Data Scientist",
+        "description": "Looking for an employee with a PhD in Data Science to analyze complex data sets using statistical techniques. We are looking for someone that can improve our models and suggest actionable steps for our Web Start-Up.",
+        "required_degree": "phD",
+        "deadline": "2026-09-30",
+        "created_at": "2026-06-02T21:18:34.976Z",
+        "created_by": 2,
+        "job_type": "full_time",
+        "pay_status": "paid",
+        "location_type": "in_person"
+    }
+},
+{
+    "model": "careerportal.job",
+    "pk": 8,
+    "fields": {
+        "contact_info": "Contact us via email: phdcandidates@uio.no",
+        "title": "Post-Doctoral Research Fellow (Health Specialty)",
+        "description": "Conduct independent research, publish findings, and become a mentor to undergraduate students at the University of Oslo. We are looking for a research fellow in the field of bio-medical engineering, oncology, or health services.",
+        "required_degree": "post_doc",
+        "deadline": "2026-09-01",
+        "created_at": "2026-06-02T21:22:30.422Z",
+        "created_by": 2,
+        "job_type": "full_time",
+        "pay_status": "paid",
+        "location_type": "in_person"
+    }
+},
+{
+    "model": "careerportal.job",
+    "pk": 9,
+    "fields": {
+        "contact_info": "Contact Us: +47 000 000",
+        "title": "Red Cross Internship/Volunteer Program",
+        "description": "Start your volunteer internship with Red Cross today! We are looking for an undergraduate student with a high school diploma that wants to join our team! In this internship you will receive CPR and AED training to ensure the safety of the group you will look after!",
+        "required_degree": "high_school",
+        "deadline": "2026-07-15",
+        "created_at": "2026-06-02T21:24:39.690Z",
+        "created_by": 2,
+        "job_type": "internship",
+        "pay_status": "unpaid",
+        "location_type": "in_person"
+    }
+},
+{
+    "model": "careerportal.job",
+    "pk": 10,
+    "fields": {
+        "contact_info": "Contact us via messaging on our website! osloconsultingfirm.no",
+        "title": "Head of Sustainability",
+        "description": "Join our team as the head of sustainability at Oslo's Consulting Firm! We are looking for a candidate that has a master's in sustainable finance. If you have interest in leading our sustainability sector, apply today!",
+        "required_degree": "masters",
+        "deadline": "2026-09-01",
+        "created_at": "2026-06-02T21:28:55.590Z",
+        "created_by": 2,
+        "job_type": "full_time",
+        "pay_status": "paid",
+        "location_type": "in_person"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2026-06-02T21:26:07.089Z",
+        "user": 1,
+        "content_type": 5,
+        "object_id": "1",
+        "object_repr": "Customer Service Representative",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Required degree\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2026-06-02T21:30:15.800Z",
+        "user": 1,
+        "content_type": 5,
+        "object_id": "4",
+        "object_repr": "Elementary School Teacher",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Description\", \"Job type\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2026-06-02T22:27:53.257Z",
+        "user": 1,
+        "content_type": 5,
+        "object_id": "10",
+        "object_repr": "Head of Sustainability",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2026-06-02T22:27:58.279Z",
+        "user": 1,
+        "content_type": 5,
+        "object_id": "9",
+        "object_repr": "Red Cross Internship/Volunteer Program",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2026-06-02T22:28:02.220Z",
+        "user": 1,
+        "content_type": 5,
+        "object_id": "8",
+        "object_repr": "Post-Doctoral Research Fellow (Health Specialty)",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2026-06-02T22:28:06.770Z",
+        "user": 1,
+        "content_type": 5,
+        "object_id": "7",
+        "object_repr": "Data Scientist",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2026-06-02T22:28:11.279Z",
+        "user": 1,
+        "content_type": 5,
+        "object_id": "6",
+        "object_repr": "Munch Museum Internship",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2026-06-02T22:28:17.016Z",
+        "user": 1,
+        "content_type": 5,
+        "object_id": "5",
+        "object_repr": "Financial Analyst",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2026-06-02T22:28:23.839Z",
+        "user": 1,
+        "content_type": 5,
+        "object_id": "5",
+        "object_repr": "Financial Analyst",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Location type\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2026-06-02T22:28:29.390Z",
+        "user": 1,
+        "content_type": 5,
+        "object_id": "4",
+        "object_repr": "Elementary School Teacher",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2026-06-02T22:28:36.428Z",
+        "user": 1,
+        "content_type": 5,
+        "object_id": "3",
+        "object_repr": "Social Media Marketing Intern",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Location type\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2026-06-02T22:28:41.182Z",
+        "user": 1,
+        "content_type": 5,
+        "object_id": "2",
+        "object_repr": "Camp Counselor",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2026-06-02T22:28:48.022Z",
+        "user": 1,
+        "content_type": 5,
+        "object_id": "1",
+        "object_repr": "Customer Service Representative",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Location type\"]}}]"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+        "name": "Can add applicant",
+        "content_type": 1,
+        "codename": "add_applicant"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+        "name": "Can change applicant",
+        "content_type": 1,
+        "codename": "change_applicant"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+        "name": "Can delete applicant",
+        "content_type": 1,
+        "codename": "delete_applicant"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+        "name": "Can view applicant",
+        "content_type": 1,
+        "codename": "view_applicant"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+        "name": "Can add company",
+        "content_type": 3,
+        "codename": "add_company"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+        "name": "Can change company",
+        "content_type": 3,
+        "codename": "change_company"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+        "name": "Can delete company",
+        "content_type": 3,
+        "codename": "delete_company"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+        "name": "Can view company",
+        "content_type": 3,
+        "codename": "view_company"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+        "name": "Can add employee",
+        "content_type": 4,
+        "codename": "add_employee"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+        "name": "Can change employee",
+        "content_type": 4,
+        "codename": "change_employee"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+        "name": "Can delete employee",
+        "content_type": 4,
+        "codename": "delete_employee"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+        "name": "Can view employee",
+        "content_type": 4,
+        "codename": "view_employee"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+        "name": "Can add job",
+        "content_type": 5,
+        "codename": "add_job"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+        "name": "Can change job",
+        "content_type": 5,
+        "codename": "change_job"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+        "name": "Can delete job",
+        "content_type": 5,
+        "codename": "delete_job"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+        "name": "Can view job",
+        "content_type": 5,
+        "codename": "view_job"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+        "name": "Can add application",
+        "content_type": 2,
+        "codename": "add_application"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+        "name": "Can change application",
+        "content_type": 2,
+        "codename": "change_application"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+        "name": "Can delete application",
+        "content_type": 2,
+        "codename": "delete_application"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+        "name": "Can view application",
+        "content_type": 2,
+        "codename": "view_application"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+        "name": "Can add saved job",
+        "content_type": 6,
+        "codename": "add_savedjob"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+        "name": "Can change saved job",
+        "content_type": 6,
+        "codename": "change_savedjob"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+        "name": "Can delete saved job",
+        "content_type": 6,
+        "codename": "delete_savedjob"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+        "name": "Can view saved job",
+        "content_type": 6,
+        "codename": "view_savedjob"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": 7,
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": 7,
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": 7,
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+        "name": "Can view log entry",
+        "content_type": 7,
+        "codename": "view_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+        "name": "Can add permission",
+        "content_type": 9,
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+        "name": "Can change permission",
+        "content_type": 9,
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": 9,
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+        "name": "Can view permission",
+        "content_type": 9,
+        "codename": "view_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+        "name": "Can add group",
+        "content_type": 8,
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+        "name": "Can change group",
+        "content_type": 8,
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+        "name": "Can delete group",
+        "content_type": 8,
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+        "name": "Can view group",
+        "content_type": 8,
+        "codename": "view_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+        "name": "Can add user",
+        "content_type": 10,
+        "codename": "add_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+        "name": "Can change user",
+        "content_type": 10,
+        "codename": "change_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+        "name": "Can delete user",
+        "content_type": 10,
+        "codename": "delete_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+        "name": "Can view user",
+        "content_type": 10,
+        "codename": "view_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+        "name": "Can add content type",
+        "content_type": 11,
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+        "name": "Can change content type",
+        "content_type": 11,
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": 11,
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+        "name": "Can view content type",
+        "content_type": 11,
+        "codename": "view_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 45,
+    "fields": {
+        "name": "Can add session",
+        "content_type": 12,
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 46,
+    "fields": {
+        "name": "Can change session",
+        "content_type": 12,
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 47,
+    "fields": {
+        "name": "Can delete session",
+        "content_type": 12,
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 48,
+    "fields": {
+        "name": "Can view session",
+        "content_type": 12,
+        "codename": "view_session"
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$tajipZ4v6PWsakk9whaaMG$I9rz1Iw3tYKBGp9oKr9g8yy+9Y91gAC7UFLQGyhztqw=",
+        "last_login": "2026-06-02T22:27:39.518Z",
+        "is_superuser": true,
+        "username": "superusernina",
+        "first_name": "",
+        "last_name": "",
+        "email": "ninagyorgy@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-06-02T21:00:10.717Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$gksSStKHwwdnhfEmdj4Kr4$z8xJ64uKSleINXKXjIMhUj/IkjbH14bZoVrqN4tr2II=",
+        "last_login": "2026-06-02T22:25:59.161Z",
+        "is_superuser": false,
+        "username": "ninagyorgy",
+        "first_name": "",
+        "last_name": "",
+        "email": "ninagyorgy@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-02T21:02:20.000Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$q5zXBURq8hHzggt1adW5Mi$Dn5I9MLUwGfVFS6nIZBbv5reoVbb1GVTuL4NS5dWdKw=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "ninagyorgy123",
+        "first_name": "",
+        "last_name": "",
+        "email": "ninagyorgy123@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-02T21:03:15.268Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+        "app_label": "careerportal",
+        "model": "applicant"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+        "app_label": "careerportal",
+        "model": "application"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+        "app_label": "careerportal",
+        "model": "company"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+        "app_label": "careerportal",
+        "model": "employee"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+        "app_label": "careerportal",
+        "model": "job"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+        "app_label": "careerportal",
+        "model": "savedjob"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+        "app_label": "auth",
+        "model": "user"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "4j9hjv8f25mvlys092092slxxorbbu5u",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hChBQaX7nsGMsOAVA0kpV0Z765NutDtf-_9lwi4rSVsPS1hZnERSpx-N8L4SHUHfMd6azK2ui4zyV2RB-1yapye18P9OyjYy7e2ziEpDdY6NDQSDSPEnB2wxmzSYMkTWmt0JDwjRacye288aAXEGcT7A--zOHU:1wUXaF:slSu2e_hEPOlJzZAD9dPPC-jGxPaBcpYMBS8P79GRuU",
+        "expire_date": "2026-06-16T22:27:39.521Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "6jbthw243h0iybs96kg6fmvllmngvrfb",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2pDAAA4u3XsGMgwgVQNJaVfGu9smXej2vff_WwRalxrWkecwJXERWpx-WSR-5raL9KB275J7W-Ypyj2Rhx3y1lN-XY_276DSqNvasVcREV3x1kSM3gA42IhzDApNIVC5OH0u5K3iUpCMRQPMGbI2SXy-yRU3mg:1wUXWP:Mge1bTrDCQ03s0kB3o3fI6cnzGuoHxsxZllOWDglblM",
+        "expire_date": "2026-06-16T22:23:41.633Z"
+    }
+}
+]
