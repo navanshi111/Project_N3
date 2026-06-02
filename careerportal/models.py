@@ -99,6 +99,20 @@ class Job(models.Model):
         default='paid'
     )
 
+    LOCATION_TYPE_CHOICES = [
+    ('in_person', 'In Person'),
+    ('remote', 'Remote'),
+    ('hybrid', 'Hybrid'),
+    ]
+    
+    location_type = models.CharField(
+        max_length=20,
+        choices=LOCATION_TYPE_CHOICES,
+        default='in_person'
+        )
+
+    
+
     def __str__(self):
         return self.title
     
