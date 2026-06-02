@@ -39,6 +39,18 @@
 
     <br>
 
+    <label>Filter by Location:</label><br>
+    <select name="location_type" class="form-control">
+        <option value="">All Locations</option>
+        {% for value, label in location_type_choices %}
+         <option value="{{ value }}">{{ label }}</option>
+    {% endfor %}
+    </select>
+
+    <br>
+
+
+
     <button type="submit" class="btn btn-primary">
         Filter
     </button>
