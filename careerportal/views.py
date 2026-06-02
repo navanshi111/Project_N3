@@ -102,6 +102,7 @@ def job_list(request):
     degree = request.GET.get('degree')
     job_type = request.GET.get('job_type')
     pay_status = request.GET.get('pay_status')
+    location_type = request.GET.get('location_type')
 
 
     if degree:
@@ -110,12 +111,15 @@ def job_list(request):
         jobs = jobs.filter(job_type=job_type)
     if pay_status:
         jobs = jobs.filter(pay_status=pay_status)
+    if location_type:
+        jobs = jobs.filter(location_type=location_type)
 
     return render(request, "careerportal/jobs.html", 
         {"jobs": jobs,
          "degree_choices": Job.DEGREE_CHOICES,
          "job_type_choices": Job.JOB_TYPE_CHOICES,
-         "pay_choices": Job.PAY_CHOICES,})
+         "pay_choices": Job.PAY_CHOICES,
+         "location_type_choices": Job.LOCATION_TYPE_CHOICES,})
 
 def job_detail(request, job_id):
     job = get_object_or_404(Job, pk=job_id)

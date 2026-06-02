@@ -72,7 +72,7 @@ class RegisterForm(UserCreationForm):
 class JobForm(forms.ModelForm):
     class Meta:
         model = Job
-        fields = ['title', 'description', 'required_degree', 'deadline', 'job_type', 'pay_status', 'contact_info']
+        fields = ['title', 'description', 'required_degree', 'deadline', 'job_type', 'pay_status','location_type', 'contact_info']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
@@ -80,6 +80,7 @@ class JobForm(forms.ModelForm):
             'deadline': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
             'job_type': forms.Select(attrs={'class': 'form-control'}),
             'pay_status': forms.Select(attrs={'class': 'form-control'}),
+            'location_type': forms.Select(attrs={'class': 'form-control'}),
             'contact_info': forms.Textarea(attrs={
                 'class': 'form-control',
                 'rows': 3,
