@@ -195,4 +195,14 @@ footer {
     font-size: 0.9rem;
 }
 
-/* --- Google Font import --- */
+/* --- Homepage Banner Image --- */
+.home-image-container {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.home-image {
+    width: 100%;
+    max-width: 1100px;
+    height: auto;
+}
