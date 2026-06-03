@@ -26,11 +26,11 @@
 {% if user.is_authenticated %}
 
     <div class="text-center">
-        <p>
+        <p class="mb-1">
             Welcome back, <strong>{{ user.username }}</strong>!
         </p>
 
-        <div class="d-flex justify-content-center gap-3 mt-3">
+        <div class="d-flex justify-content-center gap-3 mb-0">
             <a href="{% url 'profile' %}" class="btn btn-primary">
                 Go to Profile
             </a>
@@ -47,7 +47,7 @@
 {% else %}
 
     <div class="text-center">
-        <p>
+        <p class="mb-1">
             Please
             <a href="{% url 'login' %}">login</a>
             or
@@ -55,7 +55,7 @@
             to get started.
         </p>
 
-        <div class="mt-3">
+        <div class="mb-0">
             <a href="{% url 'login' %}" class="btn btn-primary me-2">
                 Login
             </a>
@@ -68,10 +68,11 @@
 
 {% endif %}
 
-<div class="home-image-container">
-    <img src="{% static 'careerportal/images/banner.PNG' %}"
-         alt="CareerPortal Banner"
-         class="home-image">
+<div class="text-center">
+    <img src="{% static 'careerportal/images/banner.png' %}"
+         alt="CareerPortal Logo"
+         class="img-fluid"
+         style="max-width: 600px; height: auto;">
 </div>
 
 {% endblock %}
