@@ -117,5 +117,5 @@ class ApplicationForm(forms.ModelForm):
         }
         labels = {
             'text': 'Cover Letter',
-            'cv': 'Attach CV (optional)',
+            'cv': 'Attach CV (PDF ONLY, Attachment Optional)',
         }
