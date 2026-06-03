@@ -194,3 +194,15 @@ footer {
     text-align: center;
     font-size: 0.9rem;
 }
+
+/* --- Homepage Banner Image --- */
+.home-image-container {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.home-image {
+    width: 100;
+    max-width: 100%;
+    height: auto;
+}
