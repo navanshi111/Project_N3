@@ -52,8 +52,17 @@ a:hover {
     font-family: 'Playfair Display', serif;
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--white) !important;
     letter-spacing: 0.5px;
+}
+
+.career-text {
+    color: #ec2179;
+    font-weight: 700;
+}
+
+.portal-text {
+    color: #d26d8d;
+    font-weight: 700;
 }
 
 .nav-link {
