@@ -3,17 +3,17 @@
 
 /* --- Colour variables --- */
 :root {
-    --pink:        #f4b8c1;   /* blush pink — main brand colour */
-    --pink-dark:   #e8919e;   /* darker pink — hover states */
-    --pink-light:  #fdeef0;   /* very light pink — backgrounds */
-    --blue:        #b8d4f4;   /* powder blue — accent */
-    --blue-dark:   #8ab8ef;   /* darker blue — hover states */
-    --blue-light:  #eef4fd;   /* very light blue — backgrounds */
+    --pink:        #f4b8c1;   
+    --pink-dark:   #e8919e;   
+    --pink-light:  #fdeef0;   
+    --blue:        #b8d4f4;   
+    --blue-dark:   #8ab8ef;   
+    --blue-light:  #eef4fd;   
     --white:       #ffffff;
     --off-white:   #fafafa;
-    --text-dark:   #3a3a3a;   /* main body text */
-    --text-muted:  #888888;   /* secondary text */
-    --border:      #e8e0e2;   /* subtle divider lines */
+    --text-dark:   #3a3a3a;   
+    --text-muted:  #888888;   
+    --border:      #e8e0e2;   
 }
 
 /* --- Base --- */
