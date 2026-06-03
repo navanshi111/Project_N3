@@ -198,12 +198,14 @@ footer {
 /* --- Homepage Banner Image --- */
 .home-image-container {
     margin-top: 3rem;
-    width: 100%;
+
+    /* cancel Bootstrap container width */
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
 }
 
 .home-image {
     width: 100%;
-    max-width: none;
     height: auto;
     display: block;
 }
