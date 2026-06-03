@@ -197,12 +197,13 @@ footer {
 
 /* --- Homepage Banner Image --- */
 .home-image-container {
-    text-align: center;
     margin-top: 3rem;
+    width: 100%;
 }
 
 .home-image {
     width: 100%;
-    max-width: 1100px;
+    max-width: none;
     height: auto;
+    display: block;
 }
