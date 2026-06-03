@@ -5,13 +5,9 @@ def user_roles(request):
     is_employee = False
 
     if request.user.is_authenticated:
-        is_applicant = Applicant.objects.filter(
-            id=request.user.id
-        ).exists()
+        is_applicant = Applicant.objects.filter(id=request.user.id).exists()
 
-        is_employee = Employee.objects.filter(
-            id=request.user.id
-        ).exists()
+        is_employee = Employee.objects.filter(id=request.user.id).exists()
 
     return {
         'is_applicant': is_applicant,

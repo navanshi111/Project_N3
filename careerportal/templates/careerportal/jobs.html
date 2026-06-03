@@ -57,10 +57,10 @@
 
 </form>
 
-{% if request.user.is_authenticated %}
-    <a href="{% url 'post_job' %}" class="btn btn-primary mb-4">
-        + Post a Job
-    </a>
+{% if is_employee %}
+<a href="{% url 'post_job' %}"class="btn btn-primary mb-4">
+    + Post a Job
+</a>
 {% endif %}
 
 {% if jobs %}
