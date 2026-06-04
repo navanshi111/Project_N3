@@ -207,7 +207,8 @@ footer {
 /* --- Homepage Banner Image --- */
 .home-image-container {
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
 }
 
 .home-image {
